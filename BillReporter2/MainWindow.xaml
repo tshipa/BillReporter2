@@ -1,0 +1,53 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"  x:Class="BillReporter2.MainWindow"
+        Title="Main View" Height="350" Width="525" Foreground="Black"  WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <syncfusion:TabControlExt HorizontalAlignment="Stretch" TabStripPlacement="Left" VerticalAlignment="Stretch" Margin="-10,0,0,0">
+            <syncfusion:TabItemExt Header="Dashboard" MinWidth="150" MinHeight="40">
+                <Grid>
+                    <Frame  HorizontalAlignment="Stretch"  Name="monthly" VerticalAlignment="Stretch" />
+
+                </Grid>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="Bill Manager" MinWidth="150" MinHeight="40">
+                <Grid>
+                    <ToolBar HorizontalAlignment="Stretch" Height="30" VerticalAlignment="Top" Margin="0,0,-4,251">
+                        <Button Content="Contacts" x:Name="updateContacts" Click="updateContacts_Click" />
+                        <Button Content="Send Bills" x:Name="sendBills" Click="sendBills_Click" />
+                        <Button Content="Upload New" x:Name="newMonthUpload" Click="newMonthUpload_Click" />
+                    </ToolBar>
+                    <syncfusion:SfBusyIndicator x:Name="readText" IsBusy="False" Margin="0,-15,0,15">
+                        <syncfusion:SfBusyIndicator.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="0,15,0,0" FontWeight="Bold" FontStyle="Italic" Foreground="Black"><Run Text="Reading Text File..."/></TextBlock>
+                            </DataTemplate>
+                        </syncfusion:SfBusyIndicator.HeaderTemplate>
+                    </syncfusion:SfBusyIndicator>
+                    <syncfusion:SfDataGrid   AllowFiltering="True" AllowFrozenGroupHeaders="True" AllowGrouping="True" AllowResizingColumns="True" AllowSorting="True" Margin="-2,25,-1,0" x:Name="lsDb" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" />
+                </Grid>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="Reporting" MinWidth="150" MinHeight="40">
+                <syncfusion:ReportDesigner VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1,24,-1,-24"/>
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt Header="Settings" MinWidth="150" MinHeight="40">
+                <Grid>
+                    <syncfusion:TreeViewAdv x:Name="emailView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="146">
+                        <syncfusion:TreeViewItemAdv EditedItemTemplate="{x:Null}"  EditedItemTemplateSelector="{x:Null}" ExpanderStyle="{x:Null}" FakeItemTemplate="{x:Null}" FakeItemTemplateSelector="{x:Null}" Header="Email Settings" IsImageSourceFreeze="False"   Name="emailSet" MouseDoubleClick="emailSet_MouseDoubleClick"/>
+                        <syncfusion:TreeViewItemAdv EditedItemTemplate="{x:Null}"  EditedItemTemplateSelector="{x:Null}" ExpanderStyle="{x:Null}" FakeItemTemplate="{x:Null}" FakeItemTemplateSelector="{x:Null}" Header="Theme Settings" IsImageSourceFreeze="False" Name="themeSet" MouseDoubleClick="themeSet_MouseDoubleClick"/>
+                    </syncfusion:TreeViewAdv>
+                    <DockPanel>
+                        <Frame  NavigationUIVisibility="Hidden"  HorizontalAlignment="Left" Height="313" Name="_mainFrame" Margin="146,0,0,0" VerticalAlignment="Top" Width="335"/>
+                    </DockPanel>
+                </Grid>
+            </syncfusion:TabItemExt>
+            
+        </syncfusion:TabControlExt>
+        
+       
+    </Grid>
+</Window>

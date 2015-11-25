@@ -1,0 +1,160 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
+      xmlns:local="clr-namespace:BillReporter2.Dashboard_Views"
+      xmlns:gauge="clr-namespace:CircularGauge;assembly=CircularGauge"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="BillReporter2.Dashboard_Views.Monthly" 
+      xmlns:ModelHelpers="clr-namespace:BillReporter2.Dashboard_Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="Monthly">
+    
+    <Grid>
+        
+        <Grid.DataContext>
+            <local:ViewModel/>
+        </Grid.DataContext>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.Resources>
+            <DataTemplate x:Key="labelTemplate">
+                <TextBlock Text="{Binding LabelContent}" FontSize="12" />
+            </DataTemplate>
+
+            <Style x:Key="axisLineStyle" TargetType="Line">
+                <Setter Property="Stroke" Value="#FFBCBEC0"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+            </Style>
+
+            <Style x:Key="gridLineStyle" TargetType="Line">
+                <Setter Property="Stroke" Value="Gray"/>
+                <Setter Property="StrokeThickness" Value="0.2"/>
+            </Style>
+
+            <Style x:Key="majorTickLineStyle" TargetType="Line">
+                <Setter Property="Stroke" Value="#FFBCBEC0"/>
+                <Setter Property="StrokeThickness" Value="1"/>
+            </Style>
+
+        </Grid.Resources>
+
+        <!--Add the header to the sample-->
+        <TextBlock Text="Telephone Usage Statistics" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"  
+                   FontSize="20" FontWeight="SemiBold"  Grid.ColumnSpan="2"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Center"  Grid.Column="1">
+            <ComboBox x:Name="palettecombo" ItemsSource="{Binding PaletteList}" Height="25" Width="150" BorderThickness="1" 
+                      SelectedIndex="0" Margin="5" >
+            </ComboBox>
+        </StackPanel>
+
+
+
+        <gauge:CircularGaugeControl x:Name="myGauge2"  Grid.Column="1" Grid.Row="1"
+                                        Radius="150" 
+                                        ScaleRadius="100" 
+                                        ScaleStartAngle="140" 
+                                        ScaleSweepAngle="270"
+                                        PointerLength="90" 
+                                        PointerCapRadius="35" 
+                                        MinValue="0" 
+                                        MaxValue="100" 
+                                        MajorDivisionsCount="10" 
+                                        MinorDivisionsCount="5" 
+                                        OptimalRangeEndValue="80"
+                                        OptimalRangeStartValue="50"
+                                        CurrentValue="{Binding Score}"
+                                        
+                                        
+                                        RangeIndicatorThickness="9"
+                                        RangeIndicatorRadius="80"
+                                        RangeIndicatorLightRadius="10"
+                                        RangeIndicatorLightOffset="80"
+                                        ScaleLabelRadius="115"
+                                        ScaleLabelSize="40,20"
+                                        ScaleLabelFontSize="10"
+                                        ScaleLabelForeground="White"
+                                        MajorTickSize="10,3"
+                                        MinorTickSize="3,1"
+                                        MajorTickColor="White"
+                                        MinorTickColor="LightGray"
+                                        ImageOffset="-50"
+                                        GaugeBackgroundColor="CornflowerBlue"
+                                        PointerThickness ="5"
+                                        DialTextOffset="40"
+                                        DialText="% Change Monthly Bill"
+                                        DialTextColor="DarkBlue"
+                                        
+                                        />
+     
+
+        <!--Add the barseries for activeusers by social network in the world-->
+        <syncfusion:SfChart x:Name="barChart" Grid.Row="1" Grid.RowSpan="3" Margin="10" 
+                            Palette="{Binding ElementName=Metr,Path=SelectedItem}" >
+
+            <syncfusion:SfChart.PrimaryAxis>
+                <syncfusion:CategoryAxis LabelTemplate="{StaticResource labelTemplate }" AxisLineStyle="{StaticResource axisLineStyle}"
+                                         MajorTickLineStyle="{StaticResource majorTickLineStyle}" 
+                                         LabelPlacement="BetweenTicks" MajorGridLineStyle="{StaticResource gridLineStyle}"/>
+            </syncfusion:SfChart.PrimaryAxis>
+
+            <syncfusion:SfChart.SecondaryAxis>
+                <syncfusion:NumericalAxis Maximum="10000" Interval="1000" Minimum="0" ShowGridLines="True" 
+                                          LabelTemplate="{StaticResource labelTemplate }"
+                                          AxisLineStyle="{StaticResource axisLineStyle}"
+                                          MajorTickLineStyle="{StaticResource majorTickLineStyle}" />
+            </syncfusion:SfChart.SecondaryAxis>
+
+            <syncfusion:SfChart.Legend>
+                <syncfusion:ChartLegend IconHeight="8" IconWidth="8" FontSize="11" />
+            </syncfusion:SfChart.Legend>
+
+            <syncfusion:BarSeries x:Name="barSeries1" ItemsSource="{Binding ActiveUsers}" XBindingPath="SocialNetwork" 
+                                  YBindingPath="Status" Label="Top 10 Telephone Users" />
+
+
+        </syncfusion:SfChart>
+
+
+        <!--Active users of social network in the year of 2012,2014 and 2015-->
+        <syncfusion:SfChart x:Name="barChart1" Grid.Row="2" Grid.Column="1" Margin="10" 
+                            Palette="{Binding ElementName=Metr,Path=SelectedItem}" >
+
+            <syncfusion:SfChart.PrimaryAxis>
+                <syncfusion:CategoryAxis LabelTemplate="{StaticResource labelTemplate }" AxisLineStyle="{StaticResource axisLineStyle}"
+                                         MajorTickLineStyle="{StaticResource majorTickLineStyle}" 
+                                         LabelPlacement="BetweenTicks" MajorGridLineStyle="{StaticResource gridLineStyle}"/>
+            </syncfusion:SfChart.PrimaryAxis>
+
+            <syncfusion:SfChart.SecondaryAxis>
+                <syncfusion:NumericalAxis Maximum="30000" Interval="1000" Minimum="0" ShowGridLines="True" 
+                                          LabelTemplate="{StaticResource labelTemplate }"
+                                          AxisLineStyle="{StaticResource axisLineStyle}"
+                                          MajorTickLineStyle="{StaticResource majorTickLineStyle}" />
+            </syncfusion:SfChart.SecondaryAxis>
+
+            <syncfusion:SfChart.Legend>
+                <syncfusion:ChartLegend IconHeight="8" IconWidth="8" FontSize="11" />
+            </syncfusion:SfChart.Legend>
+
+            <syncfusion:BarSeries x:Name="barSeries2" ItemsSource="{Binding AnnualStatus}" XBindingPath="SocialNetwork" 
+                                  YBindingPath="Status" Label="Charge By Department" />
+
+
+        </syncfusion:SfChart>
+
+    </Grid>
+</Page>

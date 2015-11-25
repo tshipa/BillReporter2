@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Test_Tel" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=Test_Tel;Integrated Security=True" SettingsObjectName="BillReporter2.Properties.Settings" SettingsPropertyName="Test_TelConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Bills" Member="Bills">
+    <Type Name="Bill">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Day" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Time" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Duration" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Charge" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Authorization]" Member="Authorization" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Contacts" Member="Contacts">
+    <Type Name="Contact">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Authorization]" Member="Authorization" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SettingDB" Member="SettingDBs">
+    <Type Name="SettingDB">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SMTP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Themes" Member="Themes">
+    <Type Name="Theme">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="theme" Member="theme1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

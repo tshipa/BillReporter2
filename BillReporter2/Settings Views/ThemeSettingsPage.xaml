@@ -1,0 +1,33 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="BillReporter2.Settings_Views.ThemeSettingsPage" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="Theme Settings">
+
+    <Grid>
+
+        <Button Content="Update Theme" HorizontalAlignment="Left" Margin="109,258,0,0" x:Name="updateTheme" Click="updateTheme_Click" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Pick a Theme" HorizontalAlignment="Left" Margin="50,36,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Blend" HorizontalAlignment="Left" x:Name="blend" Margin="109,77,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Blue" x:Name="blue" HorizontalAlignment="Left" Margin="109,97,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Orange" x:Name="orange" HorizontalAlignment="Left" Margin="109,117,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Silver" x:Name="silver" HorizontalAlignment="Left" Margin="109,137,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Metro" x:Name="metro" HorizontalAlignment="Left" Margin="109,157,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Transparent" x:Name="transparent" HorizontalAlignment="Left" Margin="109,177,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Red" x:Name="red" HorizontalAlignment="Left" Margin="109,197,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="default" x:Name="vs2010"  HorizontalAlignment="Left" Margin="109,217,0,0" VerticalAlignment="Top"/>
+
+        <syncfusion:SfBusyIndicator x:Name="isApplyingTheme" IsBusy="False" Margin="0,-15,0,15">
+            <syncfusion:SfBusyIndicator.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Margin="0,15,0,0" FontWeight="Bold" FontStyle="Italic" Foreground="Black"><Run Text="Applying New Theme..."/></TextBlock>
+                </DataTemplate>
+            </syncfusion:SfBusyIndicator.HeaderTemplate>
+        </syncfusion:SfBusyIndicator>
+
+    </Grid>
+</Page>

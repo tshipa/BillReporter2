@@ -1,0 +1,33 @@
+﻿<Window x:Class="BillReporter2.SendMail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
+        syncfusion:SkinStorage.VisualStyle="Blend"
+        Title="SendMail" Height="383.582" Foreground="Black" WindowStartupLocation="CenterScreen" WindowStyle="None" Width="332.836">
+    <Grid Margin="0,0,0,3">
+        <Label Content="To :"  Foreground="Black"  HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Name="sendTo" Margin="95,28,0,0" VerticalAlignment="Top" Width="203">
+            <ComboBoxItem Content="tshipa.madi@gmail.com"/>
+            <ComboBoxItem Content="lefam@map.fs.gov.za"/>
+            <ComboBoxItem Content="Mail List"/>
+        </ComboBox>
+        <Button Content="Browse" Name="browseBtn" Click="browseBtn_Click" HorizontalAlignment="Left" Margin="228,76,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
+        <Label Content="Template :" Foreground="Black" HorizontalAlignment="Left" Margin="26,75,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="templatetxt" HorizontalAlignment="Left" Height="23" Margin="95,77,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="133"/>
+        <Label Content="Body :" Foreground="Black" HorizontalAlignment="Left" Margin="26,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.073,-0.018"/>
+        <TextBox HorizontalAlignment="Left" Height="118" Margin="26,191,0,0" Name="mailText"  TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" VerticalAlignment="Top" Width="272"/>
+        <Button Name="sendBtn" Content="Send" Click="sendBtn_Click" HorizontalAlignment="Left" Margin="26,332,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cancel" Name="cancelbtn" Click="cancelbtn_Click" HorizontalAlignment="Left" Margin="223,332,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" Name="PickedMonthtxt" Height="23" Margin="95,114,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="208"/>
+        <Label Content="Month :" Foreground="Black" HorizontalAlignment="Left" Margin="26,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.006,0.543"/>
+        <syncfusion:SfBusyIndicator Name="sendingMail" IsBusy="False" Margin="0,-55,0,15">
+            <syncfusion:SfBusyIndicator.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Margin="0,15,0,0" FontWeight="Bold" FontStyle="Italic" Foreground="Black">Writting and Sending Mail...</TextBlock>
+                </DataTemplate>
+            </syncfusion:SfBusyIndicator.HeaderTemplate>
+        </syncfusion:SfBusyIndicator>
+
+    </Grid>
+</Window>
